@@ -10,7 +10,7 @@ const Logout = ({ setIsAuth }: LogoutType) => {
   const navigate = useNavigate();
   const logout = () => {
     //googleでログアウト
-    signOut(auth).then((result) => {
+    signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
       navigate("/login");
