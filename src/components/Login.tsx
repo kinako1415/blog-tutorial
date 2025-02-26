@@ -1,6 +1,20 @@
-const CreatePost = () => {
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
+import { useNavigate } from "react-router-dom";
+
+type LoginType = {
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Login = ({ setIsAuth }: LoginType) => {
+  const navigate = useNavigate();
   const loginInWithGoogle = () => {
     //googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("IsAuth", "true");
+      setIsAuth(true);
+      navigate("/");
+    });
   };
   return (
     <div>
@@ -10,4 +24,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default Login;
