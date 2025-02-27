@@ -9,9 +9,11 @@ const Navbar = ({ isAuth }: navbar) => {
   return (
     <nav>
       <Link to="/">ホーム</Link>
-      <Link to="/createpost">記事投稿</Link>
       {isAuth ? (
-        <Link to="/logout">ログアウト</Link>
+        <>
+          <Link to="/createpost">記事投稿</Link>
+          <Link to="/logout">ログアウト</Link>
+        </>
       ) : (
         <Link to="/login">ログイン</Link>
       )}
